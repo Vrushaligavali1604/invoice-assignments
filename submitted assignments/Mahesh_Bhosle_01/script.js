@@ -14,8 +14,8 @@ class InvoiceComponent extends HTMLElement {
         footerClass: 'invoice-footer',
         amountInWordsClass: 'amount-in-words',
         footerTextClass: 'invoice-footer-text',
-        showBankDetails: true, 
-        showTerms: true 
+        showBankDetails: true,
+        showTerms: true
     };
 
     // Default data
@@ -49,7 +49,7 @@ class InvoiceComponent extends HTMLElement {
         invoiceNumber: 'IN00000659',
         invoiceDate: 'Sep 4, 2024',
         items: [
-            { name: 'Tax Demo', price: 100.00, quantity: 3, subTotal: 270.00, discount: 30.00, sgst: 16.20, cgst: 16.20, igst: 0.00, width: 5, height: 10, sq: 50},
+            { name: 'Tax Demo', price: 100.00, quantity: 3, subTotal: 270.00, discount: 30.00, sgst: 16.20, cgst: 16.20, igst: 0.00, width: 5, height: 10, sq: 50 },
             { name: 'Frame Demo', price: 50.00, quantity: 6, subTotal: 300.00, discount: 0.00, sgst: 0.00, cgst: 0.00, igst: 0.00, width: 4, height: 8, sq: 10 },
             { name: 'Frame Demo', price: 50.00, quantity: 6, subTotal: 300.00, discount: 0.00, sgst: 0.00, cgst: 0.00, igst: 0.00, width: 4, height: 8, sq: 10 }
         ],
@@ -124,101 +124,101 @@ class InvoiceComponent extends HTMLElement {
 
     render() {
         this.container.innerHTML = ''; // Clear previous content
-    
+
         // Use the provided config and data, otherwise fall back to defaults
         const config = this.config || this.defaultConfig;
         const data = this.data || this.defaultData;
-    
+
         // Check if party data is defined
         const seller = data.party || {};
         const client = data.company || {};
-    
+
         // Apply the container class
         this.container.classList.add(config.containerClass);
-    
+
         // Header
         const header = document.createElement('div');
         header.classList.add(config.headerClass);
-    
+
         const logo = document.createElement('img');
         logo.src = data.logo || this.defaultData.logo; // Fallback to default logo
         logo.alt = data.logoAlt || 'Company Logo';
         logo.classList.add(config.logoClass);
         header.appendChild(logo);
-    
+
         const title = document.createElement('h1');
         title.textContent = 'Invoice';
         title.classList.add(config.titleClass);
         header.appendChild(title);
-    
+
         this.container.appendChild(header);
-    
+
         // Invoice details
         const details = document.createElement('div');
         details.classList.add(config.detailsClass);
-    
+
         // Seller information
         const sellerInfo = this.createInfoSection('Seller', seller);
         details.appendChild(sellerInfo);
-    
+
         // Client information
         const clientInfo = this.createInfoSection('Client', client);
         details.appendChild(clientInfo);
-    
+
         this.container.appendChild(details);
-    
+
         // Invoice items
         const items = document.createElement('div');
         items.classList.add(config.itemsClass);
-    
+
         const table = document.createElement('table');
         table.classList.add(config.tableClass);
-    
+
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
         headerRow.appendChild(this.createTableHeaderCell('Product'));
-    
-         // Collect all unique keys from the items to create headers
-    const allKeys = new Set();
 
-    data.items.forEach(item => {
-        Object.keys(item).forEach(key => {
-            allKeys.add(key);
+        // Collect all unique keys from the items to create headers
+        const allKeys = new Set();
+
+        data.items.forEach(item => {
+            Object.keys(item).forEach(key => {
+                allKeys.add(key);
+            });
         });
-    });
 
-    allKeys.forEach(key => {
-        if (key !== 'name') {
-            headerRow.appendChild(this.createTableHeaderCell(key.charAt(0).toUpperCase() + key.slice(1)));
-        }
-    });
-
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-
-    const tbody = document.createElement('tbody');
-    data.items.forEach(item => {
-        const row = document.createElement('tr');
-        row.appendChild(this.createTableCell(item.name));
-
-        // Create cells based on the collected keys
         allKeys.forEach(key => {
             if (key !== 'name') {
-                row.appendChild(this.createTableCell(item[key] !== undefined ? item[key] : ''));
+                headerRow.appendChild(this.createTableHeaderCell(key.charAt(0).toUpperCase() + key.slice(1)));
             }
         });
 
-        tbody.appendChild(row);
-    });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
 
-    table.appendChild(tbody);
-    items.appendChild(table);
-    this.container.appendChild(items);
-    
+        const tbody = document.createElement('tbody');
+        data.items.forEach(item => {
+            const row = document.createElement('tr');
+            row.appendChild(this.createTableCell(item.name));
+
+            // Create cells based on the collected keys
+            allKeys.forEach(key => {
+                if (key !== 'name') {
+                    row.appendChild(this.createTableCell(item[key] !== undefined ? item[key] : ''));
+                }
+            });
+
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+        items.appendChild(table);
+        this.container.appendChild(items);
+
         // Total section
         const totalSection = document.createElement('div');
         totalSection.classList.add(config.totalSectionClass);
-    
+
         const totalItems = [
             { label: 'Subtotal:', value: data.subTotal !== undefined ? `$${data.subTotal.toFixed(2)}` : '$0.00' },
             { label: 'Discount:', value: data.discount !== undefined ? `$${data.discount.toFixed(2)}` : '$0.00' },
@@ -229,37 +229,37 @@ class InvoiceComponent extends HTMLElement {
             { label: 'Amount:', value: data.amount !== undefined ? `$${data.amount.toFixed(2)}` : '$0.00' },
             { label: 'Total Amount:', value: data.totalAmount !== undefined ? `$${data.totalAmount.toFixed(2)}` : '$0.00' }
         ];
-    
+
         totalItems.forEach(item => {
             const totalRow = document.createElement('div');
             totalRow.innerHTML = `<strong>${item.label}</strong> ${item.value}`;
             totalSection.appendChild(totalRow);
         });
-    
+
         this.container.appendChild(totalSection);
-    
+
         // Amount in words
         const amountInWords = document.createElement('div');
         amountInWords.classList.add(config.amountInWordsClass);
         amountInWords.textContent = `Amount in words: ${data.amountInWords || 'N/A'}`;
         this.container.appendChild(amountInWords);
-    
-       // Conditionally render bank details
-       if (config.showBankDetails && data.bankDetails) {
-        const bankDetails = document.createElement('div');
-        bankDetails.classList.add(config.footerClass); // Use footerClass for styling
-    
-        const bankTitle = document.createElement('h3');
-        bankTitle.textContent = 'Bank Details';
-        bankDetails.appendChild(bankTitle);
-    
-        const bankInfo = document.createElement('p');
-        bankInfo.textContent = `Bank: ${data.bankDetails.bank}; Account: ${data.bankDetails.account}; IFSC: ${data.bankDetails.ifsc}; Branch: ${data.bankDetails.branch}`;
-        bankDetails.appendChild(bankInfo);
-    
-        this.container.appendChild(bankDetails);
-    }
-    
+
+        // Conditionally render bank details
+        if (config.showBankDetails && data.bankDetails) {
+            const bankDetails = document.createElement('div');
+            bankDetails.classList.add(config.footerClass); // Use footerClass for styling
+
+            const bankTitle = document.createElement('h3');
+            bankTitle.textContent = 'Bank Details';
+            bankDetails.appendChild(bankTitle);
+
+            const bankInfo = document.createElement('p');
+            bankInfo.textContent = `Bank: ${data.bankDetails.bank}; Account: ${data.bankDetails.account}; IFSC: ${data.bankDetails.ifsc}; Branch: ${data.bankDetails.branch}`;
+            bankDetails.appendChild(bankInfo);
+
+            this.container.appendChild(bankDetails);
+        }
+
         // Terms and conditions
         if (config.showTerms && data.terms && data.terms.length) {
             const termsSection = document.createElement('div');
@@ -272,14 +272,14 @@ class InvoiceComponent extends HTMLElement {
             });
             this.container.appendChild(termsSection);
         }
-    
+
         // Footer
         const footer = document.createElement('div');
         footer.classList.add(config.footerClass);
         footer.innerHTML = `<p class="${config.footerTextClass}">Thank you for your business!</p>`;
         this.container.appendChild(footer);
     }
-    
+
     createInfoSection(title, info) {
         const section = document.createElement('div');
         section.classList.add(this.config.sellerInfoClass);

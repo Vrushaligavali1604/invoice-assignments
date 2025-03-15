@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Design </title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+
+  <invoice-component config='{
+    "backgroundDiv": "invoice-wrapper",
+    "backgroundClass": "invoice-background",
+    
+    "rec1Class": "rect-top-1",
+    "rec2Class": "rect-top-2",
+    "rec3Class": "rect-top-3",
+    "rec4Class": "rect-bottom-1",
+    "rec5Class": "rect-bottom-2",
+    "rec6Class": "rect-bottom-3",
+    "invoiceToClass": "invoice-to-text",
+    "paymentToClass": "payment-method",
+    "thankYouClass": "thank-you-text",
+    "termsHeaderClass": "terms-header",
+    "logoTextClass": "company-logo-text",
+    "taglineClass": "company-tagline",
+    "addressTextClass": "invoice-address-text",
+    "phoneTextClass": "invoice-phone-text",
+    "websiteTextClass": "invoice-website-text", 
+    "lineClass": "line1",
+    "contentClass": "invoice-content",
+    "titleClass": "invoice-title",
+    "headerClass": "invoice-header",
+    "logoClass": "invoice-header-logo",
+    "qrClass": "qr",
+    "detailsClass": "invoice-details",
+    "addressClass": "org-address",
+    "detailsHeaderClass": "details-header",
+    "tableClass": "content-table",
+    "tableHeaderClass": "content-header",
+    "rightAlignClass": "right-align",
+    "totalClass": "total-amount",
+    "bankDetailsClass": "bank-details",
+    "termsClass": "terms primary",
+    "footerClass": "invoice-footer"
+  }'data='{
+    "companyName": "John",
+    "title": "Invoice",
+    "invoiceNumber": "INV-123456",
+    "invoiceDate": "2023-10-01",
+    "dueDate": "2023-10-15",
+    "poNumber": "PO-456789",
+    "logo": "./img/LoGo1.png",
+    "qr": "./img/sign.png",
+    "companyAddress": [
+      "XYZ Marketing Pvt Lmt",
+      "9999999999",
+      "Swipe@getswipe.in",
+      "www.getswipe.in"
+    ],
+    "invoiceTo": "Invoice To",
+    "paymentTo": "Payment Method",
+    "thankYouMessage": "Thank you for your visit!",
+    "termsHeader": "Terms & Conditions",
+    "companyLogoText": "Company",
+    "taglineText": "Company tagline here",
+   
+    "items": [
+      { "item": "Flower pot", "rate": "8,05,000.00", "qty": "1", "taxAmount": "1,44,900.00", "Totalamount": "9,49,900.00", },
+      { "item": "Dressing table", "rate": "2,117.80", "qty": "1", "taxAmount": "381.20", "Totalamount": "2,499.00" },
+      { "item": "Dream catcher", "rate": "2,117.80", "qty": "1", "taxAmount": "381.20", "Totalamount": "2,499.00" },
+      { "item": "Living room decor", "rate": "2,117.80", "qty":"1", "taxAmount": "381.20", "Totalamount": "2,499.00" },
+      { "item": "Hall decor", "rate": "2,117.80", "qty": "1", "taxAmount": "381.20", "Totalamount": "2,499.00" },
+      { "item": "Dining table", "rate": "2,117.80", "qty": "1", "taxAmount": "381.20", "Totalamount": "2,499.00" },
+      { "item": "Mirror glass", "rate": "2,117.80", "qty": "1", "taxAmount": "381.20", "Totalamount": "2,499.00" }
+      
+
+    ],
+    "subtotal": "3150",
+    "discount": "0.00",
+    "tax": "315",
+    "total": "3456", 
+    "bankDetails": {
+      "bank": "YES BANK",
+      "account": "66789999922445",
+      "ifsc": "YESB0BNA567",
+      "branch": "Kodihalli"
+    },
+    "terms": [
+
+      "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    ]
+
+
+  }'></invoice-component>
+
+  <script src="./invoice.js"></script>
+</body>
+
+</html>
