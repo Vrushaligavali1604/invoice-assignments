@@ -2,13 +2,13 @@ class InvoiceComponent extends HTMLElement {
     // Default configuration with class names for various elements
     defaultConfig = {
         containerClass: 'invoice-container',
-        headerClass:'innvoice-header',
+        headerClass:'invoice-header',
         titleClass:'invoice-title',
         DataClass:'data-type',
         detailsClass: 'invoice-details',
         dataInfoClass:'invoice-data-info',
         stateWrapperClass: 'state-wrapper',
-        gstClass:'fist-gst',
+        gstClass:'first-gst',
         dashlineClass:'dash-line',
         receiverBlockClass: 'receiver-block',
         consigneeBlockClass: 'consignee-block',
@@ -254,7 +254,7 @@ receiverBody.append(
   createValueLine(data.receiver?.firm),
   createValueLine(`STATE: ${data.receiver?.state}    STATE CODE: ${data.receiver?.stateCode} BEAT:${data.receiver?.beat}`),
   createValueLine(`GSTIN/UNIQUE ID:${data.receiver?.gstin} PC NAME:${data.receiver?.pcName}`),
-  createValueLine(`Phone:${data.receiver?.phone} SalesMan No :${data.receiver.salesMan}`)
+  createValueLine(`Phone:${data.receiver?.phone} SalesMan No :${data.receiver?.salesMan}`)
 );
 receiverSection.append(receiverHeader, receiverBody);
 
@@ -429,3 +429,9 @@ formatNestedObject(obj) {
 
 // Define the custom element
 customElements.define('invoice-component', InvoiceComponent);
+// (Optional) Export for window
+if (!window.customElements) window.customElements = [];
+window.customElements.push(
+    { component: "invoice-component", componentClass: InvoiceComponent }
+    
+);

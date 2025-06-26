@@ -7,7 +7,7 @@
     background-color:white;
     font-family: "Noto Serif", serif;
     display: flex;
-    line-height: 9mm;
+    line-height: 7mm;
     word-spacing: 2mm;
     flex-direction: column;
     justify-content: space-between;
@@ -107,7 +107,7 @@
 .invoice-data-info{
     display:flex;
     flex-direction: column;
-    line-height: 9mm;
+    line-height: 7mm;
     word-spacing: 2mm;
     font-size: 10pt;
     position: absolute;
@@ -164,7 +164,7 @@
     text-align: right;
     padding: 12pt;
     font-weight: bold;
-    border-radius: mm;
+    /*border-radius: mm;*/
     border: #575fb3;
 }
 
