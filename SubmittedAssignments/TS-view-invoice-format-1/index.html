@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    
+        <invoice-component 
+        config='{
+        "containerClass": "invoice-container",
+        "headerClass":"invoice-header",
+        "titleClass":"invoice-title",
+        "DataClass":"data-type",
+        "invoiceDetailsClass":"invoice-details",
+        "dataInfoClass":"invoice-data-info",
+        "stateWrapperClass": "state-wrapper",
+        "gstClass":"first-gst",
+        "dashlineClass":"dash-line",
+        "receiverBlockClass": "receiver-block",
+        "consigneeBlockClass": "consignee-block",
+        "sectionHeaderClass": "section-header",
+        "sectionBodyClass": "section-body",
+        "labelClass": "field-label",
+        "valueClass": "field-value",
+        "itemsClass": "invoice-items",
+        "tableClass": "invoice-table",
+        "footerClass":"invoice-footer",
+        "lineClass":"line",
+        "footerWrapperClass":  "invoice-footer",
+        "footerLeftClass": "footer-left",
+        "footerRightClass": "footer-right"
+        
+
+        }'
+          
+            data='{
+               "Title":"TAX-INVOICE" ,
+               "Data":"Number",
+               "invoiceNumber":"Fuchs3671",
+               "invoiceDate":"19/02/2025  13:55:50",
+                "poNumber":"Single overline",
+                "licNo":"Doughnut",
+                "dataInfo":{
+                "info":"Radar",
+                "title":"Legend title",
+                "state":"Maharashtra","stateCode":"27",
+                "ph":"Double overline/Font Name"
+                },
+                "FirstGst":"Drill Down",
+                "receiver": {
+            "name": "Fuchsia",
+            "firm": "SundayNavy",
+            "state": "MAHARASHTRA",
+            "stateCode": "27",
+            "beat": "Currency",
+            "gstin": "Sunday",
+            "phone": "Mail Label/",
+            "pcName": "",
+            "salesMan": "Font Strikeout"
+        },
+        "consignee": {
+            "name": "Fuchsia",
+            "firm": "Sunday",
+            "state": "MAHARASHTRA",
+            "stateCode": "27",
+            "gstin": "Sunday",
+            "foodLicNo": "Legend title"
+        },
+        "items":[
+            { "SR":"1","Product Name":"Silver","HSN":"Friday","MRP":"110","Unit":"Cross","QTY":"17.26","FREE":"267.31","Rate":"194.85","Disc Amt":"554.06","Taxabble Amt":"14062.94","CGST":{"%":"83.53","Amount":"90.74"},"SGST":{"%":"83.53","Amount":"41.26"},"Net Amt":"14062.9"},
+            { "SR":"2","Product Name":"Silver","HSN":"Friday","MRP":"110","Unit":"Cross","QTY":"17.26","FREE":"267.31","Rate":"194.85","Disc Amt":"554.06","Taxabble Amt":"14062.94","CGST":{"%":"83.53","Amount":"90.74"},"SGST":{"%":"83.53","Amount":"41.26"},"Net Amt":"14062.9"},
+            {"SR":"3","Product Name":"Silver","HSN":"Friday","MRP":"110","Unit":"Cross","QTY":"17.26","FREE":"267.31","Rate":"194.85","Disc Amt":"554.06","Taxabble Amt":"14062.94","CGST":{"%":"83.53","Amount":"90.74"},"SGST":{"%":"83.53","Amount":"41.26"},"Net Amt":"14062.9"}
+        ],
+        "footer": {
+            "totalInWords": "One Hundred Eighty-Six And Sixty-Two Paisa Only",
+            "certifiedText": "Certified that the particulars given above are true and correct and the amount indicated.",
+            "chequeBounce": "Cheque Bounce Charges Rs.500/-",
+            "fssaiNo": "Doughnut",
+            "for": "Number",
+            "signLeft": "Autorisied Signatory",
+            "signRight": "Receivers Stamp & Sign.",
+            "summary": {
+                 "taxableAmount": "-353.03",
+                  "gstAmount": "136.84",
+                 "transport": "282.72",
+                 "creditAmt": "37.10",
+                 "debitAmt": "83.39",
+                "rounding": "165.87",
+                "netAmount": "186.62"
+            }
+         }
+    }'>
+        </invoice-component>
+  
+</body>
+<script src="./script.js"></script>
+
+</html>
+ 
